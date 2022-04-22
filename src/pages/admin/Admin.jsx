@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
@@ -27,6 +28,11 @@ function Admin() {
               ...doc.data(),
             };
             postsArray.push(obj);
+          });
+          postsArray.sort(function compare(a,b) {
+            var dateA = new Date(a.time);
+            var dateB = new Date(b.time);
+            return dateB - dateA; 
           });
           setPosts(postsArray);
         } catch (error) {

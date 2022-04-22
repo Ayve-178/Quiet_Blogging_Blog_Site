@@ -48,6 +48,13 @@ export default function Write() {
       });
   };
 
+  //var categories = ["react", "javascript", "css", "html"];
+  //sessionStorage.setItem("categories", JSON.stringify(categories));
+  //var cat = JSON.parse(sessionStorage.getItem("categories"));
+  //console.log(cat);
+  //console.log(typeof(cat));
+  localStorage.clear();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => {
@@ -71,14 +78,14 @@ export default function Write() {
       time: new Date().toLocaleString(),
     };
 
-    var categoryList = JSON.parse(localStorage.getItem("categories"));
+    var categoryList = JSON.parse(sessionStorage.getItem("categories"));
     const catItem = postInfo.category.toLowerCase();
 
     const found = categoryList.find(element => element===catItem);
     
     if(!found) {
       categoryList.push(catItem);
-      localStorage.setItem("categories", JSON.stringify(categoryList));
+      sessionStorage.setItem("categories", JSON.stringify(categoryList));
     }
 
     try {

@@ -28,6 +28,11 @@ function Blogs() {
             };
             postsArray.push(obj);
           });
+          postsArray.sort(function compare(a,b) {
+            var dateA = new Date(a.time);
+            var dateB = new Date(b.time);
+            return dateB - dateA; 
+          });
           setPosts(postsArray);
         } catch (error) {
           console.log(error);

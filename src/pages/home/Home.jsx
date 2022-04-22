@@ -30,13 +30,18 @@ export default function Home() {
         };
         postsArray.push(obj);
       });
+      postsArray.sort(function compare(a,b) {
+        var dateA = new Date(a.time);
+        var dateB = new Date(b.time);
+        return dateB - dateA; 
+      });
       setPosts(postsArray);
     } catch (error) {
       console.log(error);
     }
   }
 
-  var categoryList = JSON.parse(localStorage.getItem("categories"));
+  var categoryList = JSON.parse(sessionStorage.getItem("categories"));
 
   return (
     <>
